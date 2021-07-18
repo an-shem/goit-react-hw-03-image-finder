@@ -1,4 +1,5 @@
 import Loader from 'react-loader-spinner';
+import toast, { Toaster } from 'react-hot-toast';
 
 import { Component } from 'react';
 import galleryApi from './services/galleryApi';
@@ -41,7 +42,7 @@ export class App extends Component {
       this.setState({ searchQuery });
       return;
     }
-    alert('Неверный запрос');
+    toast.error('Invalid request');
   };
 
   handleSearch = () => {
@@ -57,13 +58,13 @@ export class App extends Component {
     const { numberPage } = this.state;
 
     if (data.length === 0 && numberPage === 1) {
-      alert('Ничего не найдено');
+      toast.error('Nothing found');
       this.setState({ requestStatus: 'idle' });
       return;
     }
 
     if (data.length === 0 && numberPage > 1) {
-      alert('Картинок больше нет');
+      toast.error('End of image list');
       this.setState({ requestStatus: 'idle' });
       return;
     }
@@ -121,9 +122,20 @@ export class App extends Component {
         {showModal && (
           <Modal alt={searchQuery} url={imgUrl} closeModal={this.toggleModal} />
         )}
+        <Toaster />
       </>
     );
   }
 }
 
 export default App;
+
+// const notify = () => toast('Here is your toast.');
+// const App = () => {
+//   return (
+//     <div>
+//       <button onClick={notify}>Make me a toast</button>
+//       <Toaster />
+//     </div>
+//   );
+// };
