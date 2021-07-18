@@ -1,8 +1,10 @@
+import PropTypes from 'prop-types';
 import { ImageGalleryItem } from '../ImageGalleryItem/ImageGalleryItem';
+import { ImagesList } from './ImageGallery.styled';
 
 export function ImageGallery({ imagesList, alt, handleClick }) {
   return (
-    <ul className="ImageGallery">
+    <ImagesList>
       {imagesList.map(image => (
         <ImageGalleryItem
           key={image.id}
@@ -11,6 +13,10 @@ export function ImageGallery({ imagesList, alt, handleClick }) {
           handleClick={handleClick}
         />
       ))}
-    </ul>
+    </ImagesList>
   );
 }
+
+ImageGallery.propTypes = {
+  imagesList: PropTypes.array.isRequired,
+};

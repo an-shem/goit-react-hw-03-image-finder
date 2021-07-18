@@ -1,13 +1,13 @@
 import styled from '@emotion/styled';
 
 export const GalleryButton = styled.button`
-  margin: 0 auto 20px;
+  margin: 0 auto;
   padding: 8px 16px;
   border-radius: 2px;
   background-color: #3f51b5;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   text-align: center;
-  display: block;
+  display: inline-block;
   color: #fff;
   border: 0;
   text-decoration: none;

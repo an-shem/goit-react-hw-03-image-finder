@@ -9,7 +9,7 @@ import { ImageGallery } from './components/ImageGallery/ImageGallery';
 import { Button } from './components/Button/Button';
 import { Modal } from './components/Modal/Modal';
 
-import { WrapperLoader } from './App.styled';
+import { WrapperLoader, MyApp } from './App.styled';
 
 export class App extends Component {
   state = {
@@ -104,7 +104,7 @@ export class App extends Component {
     const { imagesList, searchQuery, requestStatus, showModal, imgUrl } =
       this.state;
     return (
-      <>
+      <MyApp>
         <Searchbar onSubmit={this.handleSubmit} />
         {imagesList.length > 0 && (
           <ImageGallery
@@ -123,19 +123,9 @@ export class App extends Component {
           <Modal alt={searchQuery} url={imgUrl} closeModal={this.toggleModal} />
         )}
         <Toaster />
-      </>
+      </MyApp>
     );
   }
 }
 
 export default App;
-
-// const notify = () => toast('Here is your toast.');
-// const App = () => {
-//   return (
-//     <div>
-//       <button onClick={notify}>Make me a toast</button>
-//       <Toaster />
-//     </div>
-//   );
-// };
